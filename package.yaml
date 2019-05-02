@@ -1,0 +1,49 @@
+name: weather
+version: 1.0
+runtime: go
+
+executables:
+  linux:
+    amd64: main_linux_amd64
+  darwin:
+    amd64: main_darwin_amd64
+  windows:
+    amd64: main_windows_amd64.exe
+
+steps:
+  fetch_weather@1.0:
+    inputs:
+      City:
+        required: false
+        description: The name of the city to get the weather for
+        sample: Portland
+      ApiKey:
+        required: true
+        description: Your API key from openweathermap.org
+        sample: f434e53981ac538056281117f3b69356
+    outputs:
+      Data:
+        description: output city weather data for today
+  fetch_forecast@1.0:
+    inputs:
+      City:
+        required: false
+        description: The name of the city to get the weather for
+        sample: Portland
+      ApiKey:
+        required: true
+        description: Your API key from openweathermap.org
+        sample: f434e53981ac538056281117f3b69356
+    outputs:
+      Data:
+        description: output city weather data for today
+  post_weather@1.0:
+    inputs:
+    outputs:
+
+#STEP_NAME=fetch_weather STEP_VERSION=1r.0 go run weather_pkg
+
+#{
+#	"City": "San Jose",
+#	"ApiKey": "f434e53981ac538056281117f3b69356"
+#}
